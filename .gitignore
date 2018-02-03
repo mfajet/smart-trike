@@ -1,3 +1,5 @@
 .env
 *.pyc
 *.jpg
+*.png
+!overlay.png

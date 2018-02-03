@@ -1,8 +1,12 @@
 import httplib, urllib, base64, json
 from dotenv import load_dotenv
+from threading import Lock
 load_dotenv(".env")
 import os
 import json
+
+mutex = Lock()
+
 def make_request(body):
     headers = {
         # Request headers. Replace the placeholder key below with your subscription key.
@@ -23,6 +27,16 @@ def make_request(body):
     print ("Response:")
     print (json.dumps(parsed, sort_keys=True, indent=2))
     if not parsed == []:
+	if(float(parse[0]["scores"]["happiness"]) > 0.89:
+		mutex.acquire()
+		try:
+			F = open("happy.csv", "rw")
+			data = F.readlines()
+			data[1] = str(int(data[1]) + 1)
+			F.writelines( data )
+			F.close()
+		finally:
+			mutex.release()
         print (parsed[0]["scores"]["happiness"])
 
     conn.close()

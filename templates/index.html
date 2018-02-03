@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <title>Video Streaming Demonstration</title>
+    <style>
+        body {
+          margin: 0;
+        }
+        img {
+          display: block;
+          width: 100vw;
+          height: 100vh;
+          object-fit: cover;
+        }
+    </style>
+  </head>
+  <body>
+    <img id="bg" src="{{ url_for('video_feed') }}">
+  </body>
+</html>
