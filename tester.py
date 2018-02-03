@@ -1,7 +1,7 @@
 import cv2
 import subprocess
 
-camera = cv2.VideoCapture(0)
+camera = cv2.VideoCapture(-1)
 
 count = 0
 while(True):
