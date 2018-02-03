@@ -2,6 +2,7 @@ import cv2
 import sys
 import json
 from emotion_requester import make_request
+from license_plate_reader import make_lp_request
 import threading
 import RPi.GPIO as GPIO
 import time
@@ -26,6 +27,7 @@ while True:
         last=time.time()
         t = threading.Thread(target=make_request, args = (body,))
         threads.append(t)
+	make_lp_request()
         t.daemon = True
         t.start()
     elif cv2.waitKey(1)& 0xFF == ord('x'):
