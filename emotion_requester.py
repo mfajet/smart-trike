@@ -27,13 +27,15 @@ def make_request(body):
     print ("Response:")
     print (json.dumps(parsed, sort_keys=True, indent=2))
     if not parsed == []:
-	if(float(parse[0]["scores"]["happiness"]) > 0.89:
+	if(float(parsed[0]["scores"]["happiness"]) > 0.89):
 		mutex.acquire()
 		try:
-			F = open("happy.csv", "rw")
+			F = open("happy.csv", "r")
 			data = F.readlines()
 			data[1] = str(int(data[1]) + 1)
-			F.writelines( data )
+			F.close()
+			F = open("happy.csv", "w")
+			F.writelines(data)
 			F.close()
 		finally:
 			mutex.release()

@@ -27,7 +27,7 @@ while True:
         last=time.time()
         t = threading.Thread(target=make_request, args = (body,))
         threads.append(t)
-	make_lp_request()
+	make_lp_request(image)
         t.daemon = True
         t.start()
     elif cv2.waitKey(1)& 0xFF == ord('x'):
