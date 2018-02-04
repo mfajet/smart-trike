@@ -31,7 +31,7 @@ def gen(camera):
         image = overlay_transparent(image,overlay)
         ret, frame = cv2.imencode( '.jpg', image )
         yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame.tobytes() + b'\r\n\r\n')
+               b'Content-Type: image/jpeg\r\n\r\n' + frame.tostring() + b'\r\n\r\n')
 
 @app.route('/video_feed')
 def video_feed():
@@ -39,4 +39,4 @@ def video_feed():
 
 if __name__ == '__main__':
     camera = cv2.VideoCapture(0)
-    app.run(host='10.108.212.238')
+    app.run(host='10.108.136.82')
